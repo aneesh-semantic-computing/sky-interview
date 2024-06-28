@@ -1,8 +1,17 @@
-{
-  "pricing": [
-    { "productId": "1", "price": "58.95" },
-    { "productId": "2", "price": "45.00" },
-    { "productId": "3", "price": "39.99" },
-    { "productId": "5", "price": "29.99" }
-  ]
-}
+[
+  { "productId": "1", "price": "58.95" },
+  { "productId": "2", "price": "45.00" },
+  { "productId": "3", "price": "39.99" },
+  { "productId": "4", "price": "49.99" },
+  { "productId": "5", "price": "29.99" },
+  { "productId": "6", "price": "19.99" },
+  { "productId": "7", "price": "59.99" },
+  { "productId": "8", "price": "9.99" },
+  { "productId": "9", "price": "99.99" },
+  { "productId": "10", "price": "14.99" },
+  { "productId": "11", "price": "24.99" },
+  { "productId": "12", "price": "34.99" },
+  { "productId": "13", "price": "44.99" },
+  { "productId": "14", "price": "54.99" },
+  { "productId": "15", "price": "64.99" }
+]

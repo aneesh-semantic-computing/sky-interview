@@ -9,4 +9,4 @@ export interface Pricing {
   price: string;
 }
 
-export const customOrder = ['2', '5', '3', '1'];
+export const customOrder = ['15', '12', '3', '8', '5', '2', '1', '14', '9', '6', '13', '4', '10', '7', '11'];

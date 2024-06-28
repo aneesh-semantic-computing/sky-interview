@@ -1,8 +1,17 @@
-{
-  "products": [
-    { "id": "1", "name": "Product A", "type": "subscription" },
-    { "id": "2", "name": "Product B", "type": "subscription" },
-    { "id": "3", "name": "Product C", "type": "subscription" },
-    { "id": "5", "name": "Product D", "type": "subscription" }
-  ]
-}
+[
+  { "id": "1", "name": "Product A", "type": "subscription" },
+  { "id": "2", "name": "Product B", "type": "subscription" },
+  { "id": "3", "name": "Product C", "type": "subscription" },
+  { "id": "4", "name": "Product D", "type": "subscription" },
+  { "id": "5", "name": "Product E", "type": "subscription" },
+  { "id": "6", "name": "Product F", "type": "subscription" },
+  { "id": "7", "name": "Product G", "type": "subscription" },
+  { "id": "8", "name": "Product H", "type": "subscription" },
+  { "id": "9", "name": "Product I", "type": "subscription" },
+  { "id": "10", "name": "Product J", "type": "subscription" },
+  { "id": "11", "name": "Product K", "type": "subscription" },
+  { "id": "12", "name": "Product L", "type": "subscription" },
+  { "id": "13", "name": "Product M", "type": "subscription" },
+  { "id": "14", "name": "Product N", "type": "subscription" },
+  { "id": "15", "name": "Product O", "type": "subscription" }
+]
