@@ -1,52 +1,17 @@
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { NextPage, GetServerSideProps } from 'next';
 import ProductCard from '../components/ProductCard';
 import Basket from '../components/Basket';
 import BasketProvider, { useBasket } from '../context/BasketContext';
 import { Product, Pricing, customOrder } from '../types';
 import { getProductPricing } from '../utils/getProductPricing';
 
-const HomePage: NextPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [pricing, setPricing] = useState<Pricing[]>([]);
+interface HomePageProps {
+  products: Product[];
+  pricing: Pricing[];
+}
+
+const HomePage: NextPage<HomePageProps> = ({ products, pricing }) => {
   const { basket, addToBasket } = useBasket();
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const productsResponse = await fetch('/api/products');
-        const productsData = await productsResponse.json();
-        console.log('Fetched products:', productsData.products);
-        setProducts(productsData.products);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      }
-    };
-
-    fetchProducts();
-  }, []);
-
-  useEffect(() => {
-    const fetchPricing = async () => {
-      try {
-        const pricingResponse = await fetch('/api/pricing');
-        const pricingData = await pricingResponse.json();
-        console.log('Fetched pricing:', pricingData.pricing);
-        setPricing(pricingData.pricing);
-      } catch (error) {
-        console.error('Error fetching pricing:', error);
-      }
-    };
-
-    fetchPricing();
-  }, []);
-
-  console.log('Products state:', products);
-  console.log('Pricing state:', pricing);
-
-  if (!products.length || !pricing.length) {
-    return <div>Loading...</div>;
-  }
 
   const sortedProducts = customOrder
     .map(id => products.find(product => product.id === id))
@@ -70,9 +35,24 @@ const HomePage: NextPage = () => {
   );
 };
 
-const App: NextPage = () => (
+export const getServerSideProps: GetServerSideProps = async () => {
+  const productsResponse = await fetch('http://localhost:3000/api/products');
+  const productsData = await productsResponse.json();
+
+  const pricingResponse = await fetch('http://localhost:3000/api/pricing');
+  const pricingData = await pricingResponse.json();
+
+  return {
+    props: {
+      products: productsData.products,
+      pricing: pricingData.pricing,
+    },
+  };
+};
+
+const App: NextPage<HomePageProps> = (props) => (
   <BasketProvider>
-    <HomePage />
+    <HomePage {...props} />
   </BasketProvider>
 );
 
