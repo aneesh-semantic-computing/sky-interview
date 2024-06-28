@@ -65,10 +65,7 @@ const HomePage: NextPage = () => {
           />
         ))}
       </div>
-      <Basket products={sortedProducts.map(product => ({
-        ...product,
-        price: getProductPricing(product.id, pricing).price
-      }))} />
+      <Basket products={sortedProducts} pricing={pricing} />
     </div>
   );
 };

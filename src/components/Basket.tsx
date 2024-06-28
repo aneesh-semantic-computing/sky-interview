@@ -1,16 +1,22 @@
 import React from 'react';
 import { useBasket } from '../context/BasketContext';
-import { Product } from '../types';
+import { Product, Pricing } from '../types';
 
 interface BasketProps {
   products: Product[];
+  pricing: Pricing[];
 }
 
-const Basket: React.FC<BasketProps> = ({ products }) => {
+const Basket: React.FC<BasketProps> = ({ products, pricing }) => {
   const { basket } = useBasket();
 
+  const getPrice = (productId: string) => {
+    const productPrice = pricing.find(price => price.productId === productId);
+    return productPrice ? parseFloat(productPrice.price) : 0;
+  };
+
   const basketItems = products.filter(product => basket.includes(product.id));
-  const totalPrice = basketItems.reduce((total, item) => total + parseFloat(item.price), 0).toFixed(2);
+  const totalPrice = basketItems.reduce((total, item) => total + getPrice(item.id), 0).toFixed(2);
 
   return (
     <div className="basket">
@@ -21,7 +27,7 @@ const Basket: React.FC<BasketProps> = ({ products }) => {
         <ul>
           {basketItems.map(item => (
             <li key={item.id}>
-              {item.name}: ${item.price}
+              {item.name}: ${getPrice(item.id).toFixed(2)}
             </li>
           ))}
         </ul>
