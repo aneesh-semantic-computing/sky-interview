@@ -1,0 +1,8 @@
+{
+  "pricing": [
+    { "productId": "1", "price": "58.95" },
+    { "productId": "2", "price": "45.00" },
+    { "productId": "3", "price": "39.99" },
+    { "productId": "5", "price": "29.99" }
+  ]
+}

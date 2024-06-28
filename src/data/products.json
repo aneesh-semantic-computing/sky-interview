@@ -1,0 +1,8 @@
+{
+  "products": [
+    { "id": "1", "name": "Product A", "type": "subscription" },
+    { "id": "2", "name": "Product B", "type": "subscription" },
+    { "id": "3", "name": "Product C", "type": "subscription" },
+    { "id": "5", "name": "Product D", "type": "subscription" }
+  ]
+}
