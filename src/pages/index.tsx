@@ -35,19 +35,29 @@ const HomePage: NextPage<HomePageProps> = ({ products, pricing }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const productsResponse = await fetch('http://localhost:3000/api/products');
-  const productsData = await productsResponse.json();
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  try {
+    const productsResponse = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/products`);
+    const productsData = await productsResponse.json();
 
-  const pricingResponse = await fetch('http://localhost:3000/api/pricing');
-  const pricingData = await pricingResponse.json();
+    const pricingResponse = await fetch(`${process.env.NEXT_PUBLIC_VERCEL_URL}/api/pricing`);
+    const pricingData = await pricingResponse.json();
 
-  return {
-    props: {
-      products: productsData,
-      pricing: pricingData,
-    },
-  };
+    return {
+      props: {
+        products: productsData.products,
+        pricing: pricingData.pricing,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        products: [],
+        pricing: [],
+      },
+    };
+  }
 };
 
 const App: NextPage<HomePageProps> = (props) => (
